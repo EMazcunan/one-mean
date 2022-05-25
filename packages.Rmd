@@ -1,0 +1,8 @@
+# Paquetes {#packages}
+
+Como en las prácticas anteriores, cargamos el paquete `tidyverse` para que estén disponibles las funciones que utilizaremos:
+
+```{r}
+library(tidyverse)
+```
+

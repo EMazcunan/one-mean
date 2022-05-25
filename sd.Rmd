@@ -11,7 +11,7 @@ Notar que se divide por $n-1$ y no por $n$, por razones técnicas para las que p
 La **desviación típica muestral** es la raíz cuadrada de la varianza muestral:
 $$s=\sqrt{s^2}.$$
 
-Para calcular la desviación típica muestral de nuestros datos usamos la función `sd():`
+Para calcular la desviación típica muestral de nuestros datos usamos la función `sd()`{.R}:
 
 ```{r}
 sd(mandos$alcance)

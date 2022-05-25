@@ -1,7 +1,12 @@
 # Contraste de hipótesis
 
 Hasta ahora hemos descrito los datos numérica y gráficamente. 
-Retomamos ahora el siguiente problema de inferencia estadística planteado al inicio: A nivel de significación $0.05$ ¿puede afirmarse que los datos recogidos contradicen la afirmación de la empresa de que el radio de alcance medio de sus mandos es superior a $50$ metros?
+Retomamos ahora el siguiente problema de inferencia estadística planteado al inicio: 
+
+:::{.ebox data-latex="{}"}
+A nivel de significación $0.05$ ¿puede afirmarse que los datos recogidos contradicen la afirmación de la empresa de que el radio de alcance medio de sus mandos es superior a $50$ metros?
+:::
+
 
 Según la empresa  $\mu>50$. Sin embargo, la estimación de la media poblacional $\mu$ que proporcionan nuestros
 datos es la media muestral 
@@ -19,8 +24,8 @@ $$
 Como ya sabemos, la hipótesis $H_0$ se denomina  hipótesis nula y la hipótesis $H_1$  hipótesis alternativa.
 
 
-Conocemos la función `binom.test` para calcular el $p$-valor asociado a un contraste de hipótesis para una proporción.
-La función de `r R()` que usaremos ahora para resolver nuestro contraste de hipótesis sobre una media y calcular  el $p$-valor asociado es `t.test`. Concretamente, tenemos que ejecutar el siguiente código:
+Conocemos la función `binom.test()`{.R} para calcular el $p$-valor asociado a un contraste de hipótesis para una proporción.
+La función de `r R()` que usaremos ahora para resolver nuestro contraste de hipótesis sobre una media y calcular  el $p$-valor asociado es `t.test()`{.R}. Concretamente, tenemos que ejecutar el siguiente código:
 
 
 
@@ -48,7 +53,7 @@ Recordemos también que el nivel de significación $\alpha = 0.05$ fija el valor
 Si el $p$-valor es inferior a $0.05$ rechazamos la hipótesis nula en favor de la alternativa, concluyendo que los datos arrojan suficiente evidencia para afirmar que $\mu<50$ y contradicen por tanto la afirmación de la empresa.
 Si por el contrario el $p$-valor es superior a $0.05$ no rechazamos la hipótesis nula,  y decimos que no hay suficiente evidencia para contradecir la afirmación de la empresa.
 
-Como en nuestro caso hemos obtenido un $p$-valor de $`r round(pval,2)`$, mayor que $\alpha = 0.05$, no rechazamos la hipótesis nula, y concluimos que nuestros datos no arrojan suficiente evidencia para  contradecir la afirmación de la empresa.
+Como en nuestro caso hemos obtenido un $p$-valor de $`r round(pval,2)`$, mayor que $\alpha = 0.05$, no rechazamos la hipótesis nula, y concluimos que nuestros datos no proporcionan suficiente evidencia para  contradecir la afirmación de la empresa. La ligera diferencia de la media muestral $\bar{x} = `r round(xbar, 2)`$ respecto a $50$ no ha resultado significativa para poder concluir que $\mu<50$.
 
 <!-- % Antes hemos dicho que $p$-valor de este contraste puede interpretarse como la probabilidad de observar una media muestral tan pequeña como $\overline{x}=48.8852$ si  fuera $\mu=50$. En la próxima clase de teoría explicaremos cómo calcular esta probabilidad. Necesitaremos una estimación para la desviación típica $\sigma$ de la variable aleatoria $X$. La proporciona la desviación típica de nuestros datos (daremos la definición en teoría), que se calcula con el comando {\ttfamily sd} (\underline{s}tandard \underline{d}eviation): -->
 <!-- % <<>>= -->

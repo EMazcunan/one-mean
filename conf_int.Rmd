@@ -1,6 +1,15 @@
 # Intervalo de confianza {#conf_int}
 
-En la salida del comando `t.test()` encontramos también un intervalo de confianza del $95\%$:
+En la salida del comando `t.test()`{.R} encontramos también el fragmento 
+
+:::{.center data-latex="{}"}
+```
+95 percent confidence interval:
+    -Inf 50.1395
+```
+:::
+´
+que nos dice que un intervalo de confianza del $95\%$ para la media $\mu$ es:
 $$(-\infty, `r round(ci[2],4)`).$$
 
 Como sabemos, un intervalo de confianza del $95\%$ para un parámetro, incluye los valores del parámetro que no serían rechazados en un contraste de hipótesis a nivel de significación $0.05$. 

@@ -21,18 +21,12 @@ $$
 $$
 la media o valor esperado de la variable $X$.
 
-En el archivo enlazado a continuación se registran los radios de alcance de los  $100$ mandos analizados:  [mandos.csv](https://drive.google.com//uc?export=download&amp;id=1RGAPpTJJnTpj9R4jpZ5TO3u1t1RUgkJK). En el resto de la práctica se asume que el archivo `mandos.csv` está ubicado en un directorio de nombre `data` dentro del directorio en el que se encuentre el archivo `.Rmd` con el código.
+En el archivo enlazado a continuación se registran los radios de alcance de los  $100$ mandos analizados:  [mandos.csv](https://drive.google.com/uc?id=1dDOdobanG-_ZTTh0mx1R6KRSrnvtD8gL&export=download){target=_blank}. En el resto de la práctica se asume que el archivo `mandos.csv` está ubicado en un directorio de nombre `data` dentro del directorio en el que se encuentre el archivo `.Rmd` con el código.
 
 
 En esta práctica exploraremos qué conclusiones o inferencias podemos realizar sobre el parámetro desconocido $\mu$, a partir de las $100$ mediciones realizadas. 
 
-***
 
-Comenzamos cargando el paquete `tidyverse` para tener acceso a todas las funciones que usaremos:
-
-```{r}
-library("tidyverse")
-```
 
 ***
 
@@ -45,4 +39,3 @@ que creará la hoja de datos `mandos` con los contenidos del archivo ` mandos.cs
 
 
 Al visualizar el objeto `mandos` recién creado (desde la pestaña Environment) verás que  tiene una única variable, de nombre `alcance`, en la que se registra el radio de alcance medido para cada uno de los $100$ mandos analizados. 
-

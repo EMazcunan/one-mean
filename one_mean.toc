@@ -1,0 +1,18 @@
+\babel@toc {spanish}{}\relax
+\contentsline {section}{Introducción}{2}{section*.2}%
+\contentsline {subsection}{Requisitos previos}{2}{section*.3}%
+\contentsline {subsection}{Flujo de trabajo}{2}{section*.4}%
+\contentsline {section}{\numberline {1}Paquetes}{2}{section*.5}%
+\contentsline {section}{\numberline {2}Planteamiento del problema}{3}{section*.6}%
+\contentsline {section}{\numberline {3}Estadística descriptiva}{4}{section*.7}%
+\contentsline {subsection}{\numberline {3.1}Media muestral}{4}{section*.8}%
+\contentsline {subsection}{\numberline {3.2}Varianza muestral y desviación típica muestral}{5}{section*.9}%
+\contentsline {subsection}{\numberline {3.3}Cuantiles}{5}{section*.10}%
+\contentsline {subsection}{\numberline {3.4}La función \texttt {summarize()}}{7}{section*.11}%
+\contentsline {subsection}{\numberline {3.5}Histograma}{8}{section*.12}%
+\contentsline {subsection}{\numberline {3.6}Diagrama de caja y bigotes}{10}{section*.13}%
+\contentsline {subsubsection}{\numberline {3.6.1}Caja}{11}{section*.14}%
+\contentsline {subsubsection}{\numberline {3.6.2}Bigotes y outliers}{11}{section*.15}%
+\contentsline {subsubsection}{\numberline {3.6.3}Personalización}{13}{section*.16}%
+\contentsline {section}{\numberline {4}Contraste de hipótesis}{14}{section*.17}%
+\contentsline {section}{\numberline {5}Intervalo de confianza}{16}{section*.18}%

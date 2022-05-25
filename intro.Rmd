@@ -25,5 +25,3 @@ Se recomienda guardar el archivo R Markdown en una carpeta propia. En dicha carp
 Recuerda que para crear encabezados se utiliza la sintaxis `#` (nivel 1), `##` (nivel 2), ...; y que los bloques de código se crean con el atajo `Ctrl + Alt + I`.
 
 Respecto al seccionado del documento, lo más práctico es que imites la estructura de este guión de prácticas. 
-
-

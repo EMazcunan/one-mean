@@ -1,6 +1,6 @@
 ## Diagrama de caja y bigotes {#boxplot}
 
-Ahora vamos a representar las observaciones de la variable alcance mediante un gráfico que se denomina **diagrama de caja y bigotes**, usando la función `geom_boxplot()`:
+Ahora vamos a representar las observaciones de la variable alcance mediante un gráfico que se denomina **diagrama de caja y bigotes**, usando la función `geom_boxplot()`{.R}:
 
 ```{r}
 ggplot(

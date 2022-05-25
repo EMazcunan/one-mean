@@ -187,7 +187,7 @@ Antes de comenzar esta práctica, necesitas:
 \item
   Haber estudiado la práctica \href{https://emazcunan.github.io/basics-r-rstudio/}{Primeros pasos con R y RStudio}.
 \item
-  Haber estudiado el tema de inferencia estadística.
+  Haber estudiado el tema \textbf{Inferencia Estadística}.
 \end{itemize}
 
 \hypertarget{workflow}{%
@@ -201,6 +201,17 @@ Se recomienda guardar el archivo R Markdown en una carpeta propia. En dicha carp
 Recuerda que para crear encabezados se utiliza la sintaxis \texttt{\#} (nivel 1), \texttt{\#\#} (nivel 2), \ldots; y que los bloques de código se crean con el atajo \texttt{Ctrl\ +\ Alt\ +\ I}.
 
 Respecto al seccionado del documento, lo más práctico es que imites la estructura de este guión de prácticas.
+
+\hypertarget{packages}{%
+\section{Paquetes}\label{packages}}
+
+Como en las prácticas anteriores, cargamos el paquete \texttt{tidyverse} para que estén disponibles las funciones que utilizaremos:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{problem}{%
 \section{Planteamiento del problema}\label{problem}}
@@ -227,19 +238,9 @@ Nuestro objetivo es investigar el valor del parámetro
 \]
 la media o valor esperado de la variable \(X\).
 
-En el archivo enlazado a continuación se registran los radios de alcance de los \(100\) mandos analizados: \href{https://drive.google.com//uc?export=download\&id=1RGAPpTJJnTpj9R4jpZ5TO3u1t1RUgkJK}{mandos.csv}. En el resto de la práctica se asume que el archivo \texttt{mandos.csv} está ubicado en un directorio de nombre \texttt{data} dentro del directorio en el que se encuentre el archivo \texttt{.Rmd} con el código.
+En el archivo enlazado a continuación se registran los radios de alcance de los \(100\) mandos analizados: \href{https://drive.google.com/uc?id=1dDOdobanG-_ZTTh0mx1R6KRSrnvtD8gL\&export=download}{mandos.csv}. En el resto de la práctica se asume que el archivo \texttt{mandos.csv} está ubicado en un directorio de nombre \texttt{data} dentro del directorio en el que se encuentre el archivo \texttt{.Rmd} con el código.
 
 En esta práctica exploraremos qué conclusiones o inferencias podemos realizar sobre el parámetro desconocido \(\mu\), a partir de las \(100\) mediciones realizadas.
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-Comenzamos cargando el paquete \texttt{tidyverse} para tener acceso a todas las funciones que usaremos:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -286,7 +287,7 @@ Una forma natural de estimar el valor de la media teórica \(\mu\) es calcular l
 \end{Highlighting}
 \end{Shaded}
 
-La expresión \texttt{mandos\$alcance} extrae la variable \texttt{alcance} de la hoja de datos \texttt{mandos} y la función \texttt{mean()} calcula el promedio del vector resultante.
+La expresión \VERB|\NormalTok{mandos}\SpecialCharTok{$}\NormalTok{alcance}| extrae la variable \texttt{alcance} de la hoja de datos \texttt{mandos} y la función \VERB|\FunctionTok{mean}\NormalTok{()}| calcula el promedio del vector resultante.
 
 En general, dadas \(n\) observaciones \(x_1\), \(x_2\), \(\dots\), \(x_n\) de una variable aleatoria continua \(X\) la cantidad
 \[
@@ -320,7 +321,7 @@ Notar que se divide por \(n-1\) y no por \(n\), por razones técnicas para las q
 La \textbf{desviación típica muestral} es la raíz cuadrada de la varianza muestral:
 \[s=\sqrt{s^2}.\]
 
-Para calcular la desviación típica muestral de nuestros datos usamos la función \texttt{sd():}
+Para calcular la desviación típica muestral de nuestros datos usamos la función \VERB|\FunctionTok{sd}\NormalTok{()}|:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -408,7 +409,7 @@ la media aritmética entre el dato de la posición \(50\) y el de la posición \
 \hypertarget{summarize}{%
 \subsection{\texorpdfstring{La función \texttt{summarize()}}{La función summarize()}}\label{summarize}}
 
-La siguiente instrucción utiliza la función \texttt{summarize()} para obtener todas las medidas descriptivas que se han calculado de forma individual en los apartados anteriores:
+La siguiente instrucción utiliza la función \VERB|\FunctionTok{summarize}\NormalTok{()}| para obtener todas las medidas descriptivas que se han calculado de forma individual en los apartados anteriores:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -432,24 +433,12 @@ La siguiente instrucción utiliza la función \texttt{summarize()} para obtener 
 \end{Highlighting}
 \end{Shaded}
 
-El valor \texttt{mandos} del primer argumento \texttt{.data} indica la hoja de datos en la que se encuentran las variables de interés. En el resto de argumentos se especifican los estadísticos para resumir los datos que se quieren calcular. Por ejemplo, el argumento \texttt{"Media"\ =\ mean(alcance)} en nuestro ejemplo solicita calcular la media de la variable \texttt{alcance} y le asigna el nombre \texttt{"Media"}. Las variables de la hoja de datos pueden usarse escribiendo solo su nombre (escribiendo solo \texttt{alcance} en lugar de \texttt{mandos\$alcance}). La salida se organiza como una nueva hoja de datos, con una columna con el valor de cada estadístico pedido, rotulada con el nombre que se haya indicado.
-
-\textbf{Nota:} La función \texttt{kable()} del paquete \texttt{knitr} imprime hojas de datos, como la que devuelve el comando \texttt{summarize()}, en un formato de tabla adecuado para el documento de salida. Aplicada a la salida de la instrucción anterior quedaría:
-
-\begin{tabular}{r|r|r|r|r}
-\hline
-Media & Desv. estandar & 1er cuartil & Mediana & 3er cuartil\\
-\hline
-48.8852 & 7.554216 & 44.545 & 49.52 & 54.66\\
-\hline
-\end{tabular}
-
-Si quieres reproducir la tabla anterior en tu documento R Markdown, guarda la salida de la función \texttt{summarize()} en la instrucción anterior en un objeto, pongamos de nombre \texttt{summary}, y escribe después \texttt{knitr::kable(summary)}.
+El valor \texttt{mandos} del primer argumento \texttt{.data} indica la hoja de datos en la que se encuentran las variables de interés. En el resto de argumentos se especifican los estadísticos para resumir los datos que se quieren calcular. Por ejemplo, el argumento \VERB|\StringTok{"Media"} \OtherTok{=} \FunctionTok{mean}\NormalTok{(alcance)}| en nuestro ejemplo solicita calcular la media de la variable \texttt{alcance} y le asigna el nombre \texttt{"Media"}. Las variables de la hoja de datos pueden usarse escribiendo solo su nombre (escribiendo solo \texttt{alcance} en lugar de \VERB|\NormalTok{mandos}\SpecialCharTok{$}\NormalTok{alcance}|). La salida se organiza como una nueva hoja de datos, con una columna con el valor de cada estadístico pedido, rotulada con el nombre que se haya indicado.
 
 \hypertarget{histogram}{%
 \subsection{Histograma}\label{histogram}}
 
-Los \textbf{histogramas} son uno de los gráficos más comunes para representar una variable continua. Para obtener un histograma del alcance de los mandos en nuestra muestra utilizamos la función \texttt{geom\_histogram()}:
+Los \textbf{histogramas} son uno de los gráficos más comunes para representar una variable continua. Para obtener un histograma del alcance de los mandos en nuestra muestra utilizamos la función \VERB|\FunctionTok{geom\_histogram}\NormalTok{()}|:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -461,9 +450,9 @@ Los \textbf{histogramas} son uno de los gráficos más comunes para representar 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{one_mean_files/figure-latex/unnamed-chunk-25-1} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{one_mean_files/figure-latex/unnamed-chunk-24-1} \end{center}
 
-Con el siguiente código se mejora el histograma anterior usando intervalos de anchura \(5\) (\texttt{binwidth=5}), personalizando el color de las barras y añadiendo rótulos a los ejes:
+Con el siguiente código se mejora el histograma anterior usando intervalos de anchura \(5\) (\VERB|\NormalTok{binwidth }\OtherTok{=} \DecValTok{5}|), personalizando el color de las barras y añadiendo rótulos a los ejes:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -488,7 +477,7 @@ Con el siguiente código se mejora el histograma anterior usando intervalos de a
 \hypertarget{boxplot}{%
 \subsection{Diagrama de caja y bigotes}\label{boxplot}}
 
-Ahora vamos a representar las observaciones de la variable alcance mediante un gráfico que se denomina \textbf{diagrama de caja y bigotes}, usando la función \texttt{geom\_boxplot()}:
+Ahora vamos a representar las observaciones de la variable alcance mediante un gráfico que se denomina \textbf{diagrama de caja y bigotes}, usando la función \VERB|\FunctionTok{geom\_boxplot}\NormalTok{()}|:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -503,7 +492,7 @@ Ahora vamos a representar las observaciones de la variable alcance mediante un g
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{one_mean_files/figure-latex/unnamed-chunk-27-1} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{one_mean_files/figure-latex/unnamed-chunk-26-1} \end{center}
 
 Pasamos ahora a explicar cómo se construye e interpreta el diagrama de caja y bigotes que hemos dibujado.
 
@@ -597,13 +586,18 @@ El siguiente código incluye varias opciones para personalizar el aspecto del di
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{one_mean_files/figure-latex/unnamed-chunk-30-1} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{one_mean_files/figure-latex/unnamed-chunk-29-1} \end{center}
 
 \hypertarget{contraste-de-hipuxf3tesis}{%
 \section{Contraste de hipótesis}\label{contraste-de-hipuxf3tesis}}
 
 Hasta ahora hemos descrito los datos numérica y gráficamente.
-Retomamos ahora el siguiente problema de inferencia estadística planteado al inicio: A nivel de significación \(0.05\) ¿puede afirmarse que los datos recogidos contradicen la afirmación de la empresa de que el radio de alcance medio de sus mandos es superior a \(50\) metros?
+Retomamos ahora el siguiente problema de inferencia estadística planteado al inicio:
+
+\begin{ebox}{}
+A nivel de significación \(0.05\) ¿puede afirmarse que los datos recogidos contradicen la afirmación de la empresa de que el radio de alcance medio de sus mandos es superior a \(50\) metros?
+
+\end{ebox}
 
 Según la empresa \(\mu>50\). Sin embargo, la estimación de la media poblacional \(\mu\) que proporcionan nuestros
 datos es la media muestral
@@ -620,8 +614,8 @@ datos es la media muestral
 
 Como ya sabemos, la hipótesis \(H_0\) se denomina hipótesis nula y la hipótesis \(H_1\) hipótesis alternativa.
 
-Conocemos la función \texttt{binom.test} para calcular el \(p\)-valor asociado a un contraste de hipótesis para una proporción.
-La función de \textsf{R} que usaremos ahora para resolver nuestro contraste de hipótesis sobre una media y calcular el \(p\)-valor asociado es \texttt{t.test}. Concretamente, tenemos que ejecutar el siguiente código:
+Conocemos la función \VERB|\FunctionTok{binom.test}\NormalTok{()}| para calcular el \(p\)-valor asociado a un contraste de hipótesis para una proporción.
+La función de \textsf{R} que usaremos ahora para resolver nuestro contraste de hipótesis sobre una media y calcular el \(p\)-valor asociado es \VERB|\FunctionTok{t.test}\NormalTok{()}|. Concretamente, tenemos que ejecutar el siguiente código:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -658,12 +652,24 @@ Recordemos también que el nivel de significación \(\alpha = 0.05\) fija el val
 Si el \(p\)-valor es inferior a \(0.05\) rechazamos la hipótesis nula en favor de la alternativa, concluyendo que los datos arrojan suficiente evidencia para afirmar que \(\mu<50\) y contradicen por tanto la afirmación de la empresa.
 Si por el contrario el \(p\)-valor es superior a \(0.05\) no rechazamos la hipótesis nula, y decimos que no hay suficiente evidencia para contradecir la afirmación de la empresa.
 
-Como en nuestro caso hemos obtenido un \(p\)-valor de \(0.07\), mayor que \(\alpha = 0.05\), no rechazamos la hipótesis nula, y concluimos que nuestros datos no arrojan suficiente evidencia para contradecir la afirmación de la empresa.
+Como en nuestro caso hemos obtenido un \(p\)-valor de \(0.07\), mayor que \(\alpha = 0.05\), no rechazamos la hipótesis nula, y concluimos que nuestros datos no proporcionan suficiente evidencia para contradecir la afirmación de la empresa. La ligera diferencia de la media muestral \(\bar{x} = 48.89\) respecto a \(50\) no ha resultado significativa para poder concluir que \(\mu<50\).
 
 \hypertarget{conf_int}{%
 \section{Intervalo de confianza}\label{conf_int}}
 
-En la salida del comando \texttt{t.test()} encontramos también un intervalo de confianza del \(95\%\):
+En la salida del comando \VERB|\FunctionTok{t.test}\NormalTok{()}| encontramos también el fragmento
+
+\begin{center}{}
+
+\begin{verbatim}
+95 percent confidence interval:
+    -Inf 50.1395
+\end{verbatim}
+
+\end{center}
+
+´
+que nos dice que un intervalo de confianza del \(95\%\) para la media \(\mu\) es:
 \[(-\infty, 50.1395).\]
 
 Como sabemos, un intervalo de confianza del \(95\%\) para un parámetro, incluye los valores del parámetro que no serían rechazados en un contraste de hipótesis a nivel de significación \(0.05\).

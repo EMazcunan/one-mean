@@ -1,6 +1,6 @@
 ## Histograma {#histogram}
 
-Los **histogramas** son uno de los gráficos más comunes para representar una variable continua. Para obtener un histograma del alcance de los mandos en nuestra muestra utilizamos la función `geom_histogram()`: 
+Los **histogramas** son uno de los gráficos más comunes para representar una variable continua. Para obtener un histograma del alcance de los mandos en nuestra muestra utilizamos la función `geom_histogram()`{.R}: 
 
 ```{r}
 ggplot(
@@ -10,7 +10,7 @@ ggplot(
 geom_histogram() 
 ```
 
-Con el siguiente código se mejora el histograma anterior usando intervalos de anchura $5$ (`binwidth=5`), personalizando el color de las barras y añadiendo rótulos a los ejes:
+Con el siguiente código se mejora el histograma anterior usando intervalos de anchura $5$ (`binwidth = 5`{.R}), personalizando el color de las barras y añadiendo rótulos a los ejes:
 
 ```{r histog, echo=TRUE}
 ggplot(

@@ -1,4 +1,4 @@
-rmd_files: ["index.Rmd", "intro.Rmd", "problem.Rmd", "descriptive.Rmd", "hypothesis.Rmd", "conf_int.Rmd"]
+rmd_files: ["index.Rmd", "intro.Rmd", "packages.Rmd", "problem.Rmd", "descriptive.Rmd", "hypothesis.Rmd", "conf_int.Rmd"]
 book_filename: "one_mean.Rmd"
 output_dir: "docs" # Para GitHub (por defecto es _book)
 keep_tex: true
