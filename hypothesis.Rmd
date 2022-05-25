@@ -1,0 +1,60 @@
+# Contraste de hipótesis
+
+Hasta ahora hemos descrito los datos numérica y gráficamente. 
+Retomamos ahora el siguiente problema de inferencia estadística planteado al inicio: A nivel de significación $0.05$ ¿puede afirmarse que los datos recogidos contradicen la afirmación de la empresa de que el radio de alcance medio de sus mandos es superior a $50$ metros?
+
+Según la empresa  $\mu>50$. Sin embargo, la estimación de la media poblacional $\mu$ que proporcionan nuestros
+datos es la media muestral 
+$$\overline{x}=`r xbar`,$$ sugiriendo la hipótesis alternativa $\mu < 50$. Planteamos en consecuencia el siguiente contraste de hipótesis para la media $\mu$:
+
+$$
+  \left\{
+    \begin{array}{lc}
+    H_0:\ & \mu= 50\\
+    H_1:\ & \mu <50
+    \end{array}
+    \right.
+$$
+
+Como ya sabemos, la hipótesis $H_0$ se denomina  hipótesis nula y la hipótesis $H_1$  hipótesis alternativa.
+
+
+Conocemos la función `binom.test` para calcular el $p$-valor asociado a un contraste de hipótesis para una proporción.
+La función de `r R()` que usaremos ahora para resolver nuestro contraste de hipótesis sobre una media y calcular  el $p$-valor asociado es `t.test`. Concretamente, tenemos que ejecutar el siguiente código:
+
+
+
+```{r, results='markup'}
+t.test(
+    x = mandos$alcance,
+    mu = 50,
+    alternative = "less"
+)
+```
+
+```{r, include=FALSE}
+test <- .Last.value
+pval <- test$p.value
+ci <- test$conf.int
+```
+
+
+En la salida anterior vemos que el $p$-valor de nuestro contraste es $`r round(pval,2)`$.
+
+Recordemos  que, en general, el $p$-valor de un contraste es la probabilidad de observar valores tan extraños como en la muestra si la hipótesis nula fuera cierta, entendiendo por valores extraños valores más a favor de la hipótesis alternativa que de la nula.
+En este caso, el $p$-valor $`r round(pval,2)`$ se interpreta  como la probabilidad de observar una media muestral tan pequeña como $\overline{x}=`r round(xbar,2)`$ si $H_0$ fuera cierta, es decir, si $\mu=50$. 
+
+Recordemos también que el nivel de significación $\alpha = 0.05$ fija el valor umbral con el que comparar el $p$-valor para tomar la decisión final en el contraste de hipótesis, de acuerdo con la siguiente regla:
+Si el $p$-valor es inferior a $0.05$ rechazamos la hipótesis nula en favor de la alternativa, concluyendo que los datos arrojan suficiente evidencia para afirmar que $\mu<50$ y contradicen por tanto la afirmación de la empresa.
+Si por el contrario el $p$-valor es superior a $0.05$ no rechazamos la hipótesis nula,  y decimos que no hay suficiente evidencia para contradecir la afirmación de la empresa.
+
+Como en nuestro caso hemos obtenido un $p$-valor de $`r round(pval,2)`$, mayor que $\alpha = 0.05$, no rechazamos la hipótesis nula, y concluimos que nuestros datos no arrojan suficiente evidencia para  contradecir la afirmación de la empresa.
+
+<!-- % Antes hemos dicho que $p$-valor de este contraste puede interpretarse como la probabilidad de observar una media muestral tan pequeña como $\overline{x}=48.8852$ si  fuera $\mu=50$. En la próxima clase de teoría explicaremos cómo calcular esta probabilidad. Necesitaremos una estimación para la desviación típica $\sigma$ de la variable aleatoria $X$. La proporciona la desviación típica de nuestros datos (daremos la definición en teoría), que se calcula con el comando {\ttfamily sd} (\underline{s}tandard \underline{d}eviation): -->
+<!-- % <<>>= -->
+<!-- % sd(datos$alcance) -->
+<!-- % @ -->
+
+
+
+

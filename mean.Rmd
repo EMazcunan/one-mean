@@ -1,0 +1,27 @@
+## Media muestral {#mean}
+
+Una forma natural de estimar el valor de la media teórica $\mu$ es calcular la media aritmética o promedio del radio de alcance de los $100$ mandos analizados, que calculamos con la instrucción:
+
+```{r}
+mean(mandos$alcance)
+```
+```{r, include=FALSE}
+xbar <- .Last.value
+```
+La expresión `mandos$alcance` extrae la variable `alcance` de la hoja de datos `mandos` y la función `mean()` calcula el promedio del vector resultante. 
+
+
+En general, dadas $n$ observaciones $x_1$, $x_2$, $\dots$, $x_n$ de una variable aleatoria continua $X$ la cantidad
+$$
+    \bar{x} = \frac{x_1 + x_2 + \dots + x_n}{n}
+$$
+se llama **media muestral** y proporciona una estimación puntual de la **media poblacional**  $\mu = E(X)$.
+ 
+
+La media muestral $\overline{x} = `r xbar`$ de nuestros datos nos proporciona una estimación de $\mu$, pero hay que tener claro que el verdadero valor de $\mu$ sigue siendo desconocido: 
+
+* El verdadero valor de $\mu$ es la media o valor esperado de la variable aleatoria $X$. Según hemos estudiado en la teoría, identificamos $\mu$ con el valor medio teórico del radio de alcance de todos los mandos fabricados por la empresa, con el valor límite al que tendería el alcance promedio observado para $n$ mandos cuando $n$ tiende a infinito.  
+* Por su parte, el valor $\overline{x} = `r xbar`$ es tan sólo el radio de alcance promedio de los  $n=100$ mandos que hemos observado. 
+
+Podría ser que $\mu=53$, en cuyo caso los $100$ mandos observados tendrían un radio de alcance promedio inferior a la media teórica $\mu$. Y de la misma forma podría ser $\mu=45$, y que hayamos observado por azar $100$ mandos con radio de alcance promedio superior a la media teórica $\mu$. 
+

@@ -1,0 +1,5 @@
+ehtml::egitbook:
+  config:
+    toc:
+      collapse: section
+epdf::auto_pdf_book: default

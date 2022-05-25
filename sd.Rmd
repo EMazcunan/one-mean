@@ -1,0 +1,18 @@
+## Varianza muestral y desviación típica muestral {#sd}
+
+Dadas $n$ observaciones $x_1$, $x_2$, $\dots$,  $x_n$ de una variable aleatoria continua $X$, su **varianza muestral** se define como 
+$$
+    s^2 = \frac{(x_1-\bar{x})^2 + (x_2-\bar{x})^2 + \dots + (x_n-\bar{x})^2}{n-1}
+$$
+y proporciona una estimación puntual de la **varianza poblacional**  $\sigma^2 = Var(X)$.
+
+Notar que se divide por $n-1$ y no por $n$, por razones técnicas para las que por ahora podemos dar la siguiente explicación informal: En la fórmula de $s^2$ estamos utilizando la media muestral $\bar x$  de las $n$ observaciones $x_i$, que representan una muestra de la población con media $\mu$. Y conociendo la media muestral, solo $n-1$ de los $n$ valores $x_i$ pueden variar libremente. Se demuestra que si para calcular $s^2$ dividiéramos por $n$, en lugar de $n-1$, el valor obtenido tiende a subestimar el verdadero valor de la varianza poblacional $\sigma^2$.  
+ 
+La **desviación típica muestral** es la raíz cuadrada de la varianza muestral:
+$$s=\sqrt{s^2}.$$
+
+Para calcular la desviación típica muestral de nuestros datos usamos la función `sd():`
+
+```{r}
+sd(mandos$alcance)
+```

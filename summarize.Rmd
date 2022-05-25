@@ -1,0 +1,32 @@
+## La función `summarize()` {#summarize}
+
+La siguiente instrucción utiliza la función `summarize()` para obtener todas las medidas descriptivas que se han calculado de forma individual en los apartados anteriores:
+
+```{r}
+summarize(
+    .data = mandos, 
+    "Media" = mean(alcance), 
+    "Desv. estandar" = sd(alcance),
+    "1er cuartil" = quantile(alcance, 0.25),
+    "Mediana" = quantile(alcance, 0.5),
+    "3er cuartil" = quantile(alcance, 0.75)
+)
+```
+
+
+
+
+El valor `mandos` del primer argumento `.data` indica la hoja de datos en la que se encuentran las variables de interés.  En el resto de argumentos se especifican los estadísticos para resumir los datos que se quieren calcular. Por ejemplo, el argumento `"Media" = mean(alcance)` en nuestro ejemplo solicita calcular la media de la variable `alcance` y le asigna el nombre `"Media"`.  Las variables de la hoja de datos pueden usarse escribiendo solo su nombre (escribiendo solo `alcance` en lugar de `mandos$alcance`).  La salida se organiza como una nueva hoja de datos, con una columna con el valor de cada estadístico pedido, rotulada con el nombre que se haya indicado.  
+
+
+
+
+**Nota:** La función `kable()` del paquete `knitr`  imprime hojas de datos, como la que devuelve el comando `summarize()`, en un formato de tabla adecuado para el documento de salida. Aplicada a la salida de la instrucción anterior quedaría:
+
+```{r, echo=FALSE}
+summary <- .Last.value
+knitr::kable(summary)
+```
+
+Si quieres reproducir la tabla anterior en tu documento R Markdown, guarda la salida de la función `summarize()` en la instrucción anterior en un objeto, pongamos de nombre `summary`, y escribe después `knitr::kable(summary)`.
+

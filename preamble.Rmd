@@ -1,0 +1,88 @@
+```{r, include=FALSE}
+library(latex)
+library(enotation) # R() RStudio()
+library(emargintag) # :::TODO
+library(emedia)
+library(webshot)
+library(knitr)
+#library(linguisticsdown)
+```
+
+
+```{r setup, include=FALSE}
+#knit
+knitr::opts_chunk$set(
+    echo = TRUE, 
+    fig.retina = 2, 
+    fig.align = "center",
+    out.width="80%",
+    message=FALSE,
+    warning=FALSE,
+    error=FALSE,
+    results = 'hold',
+    #
+    # Truncar líneas en PDF
+    tidy = "styler",
+    #
+    # Trick to be able to customize default output (see pre.egitbook-output in style.css)
+    # Idea de:
+    # https://stackoverflow.com/questions/65495605/in-r-bookdown-how-do-i-set-the-default-code-output-background-color
+    class.output = 'egitbook-output',
+    #
+    # Hacer que .Last.value funcione casi como en consola
+    # https://stackoverflow.com/questions/31475226/using-last-value-in-rmarkdown-knitr    
+    render = function(x, ...){
+      unlockBinding(".Last.value", .BaseNamespaceEnv)
+      assign(".Last.value", x, .BaseNamespaceEnv)
+      lockBinding(".Last.value", .BaseNamespaceEnv)
+      knitr::knit_print(x, ...)
+  }
+)
+
+# comment (salida)
+if(knitr::is_html_output()){
+    knitr::opts_chunk$set(comment = '')    
+}
+if(knitr::is_latex_output()){
+    knitr::opts_chunk$set(comment = '##')    
+}
+
+# -shell-escape
+# https://stackoverflow.com/questions/55459948/latex-shell-escape-options-in-yaml-header-dont-use?noredirect=1#comment97651281_55459948
+options(tinytex.engine_args = '-halt-on-error -interaction=nonstopmode -shell-escape') 
+
+## numbers >= 10^5 will be denoted in scientific notation,
+## and rounded to 3 digits
+options(scipen = 0, digits = 7)
+## inline
+#inline_hook <- function(x) {
+#  if (is.numeric(x)) {
+#    format(x, digits = 2)
+#  } else x
+#}
+#knitr::knit_hooks$set(inline = inline_hook)
+
+# usar versión más reciente de pandoc
+rmarkdown::find_pandoc()
+
+# https://bookdown.org/yihui/bookdown/figures.html
+options(knitr.graphics.auto_pdf = TRUE)
+```
+
+
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(
+    c(
+        .packages(), 
+        'bookdown', 
+        'knitr', 
+        'rmarkdown'
+    ), 
+    'packages.bib'
+)
+```
+
+

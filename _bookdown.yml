@@ -1,0 +1,26 @@
+rmd_files: ["index.Rmd", "intro.Rmd", "problem.Rmd", "descriptive.Rmd", "hypothesis.Rmd", "conf_int.Rmd"]
+book_filename: "one_mean.Rmd"
+output_dir: "docs" # Para GitHub (por defecto es _book)
+keep_tex: true
+delete_merged_file: true
+language:
+    label:
+        fig: 'Figura '
+        tab: 'Tabla '
+        eq: 'Ecuación '
+        thm: 'Teorema '
+        lem: 'Lema '
+        cor: 'Corolario '
+        prp: 'Proposición '
+        cnj: 'Conjetura '
+        def: 'Definición '
+        exm: 'Ejemplo '
+        exr: 'Ejercicio '
+        hyp: 'Hipótesis '
+        proof: 'Prueba. '
+        remark: 'Nota. '
+        solution: 'Solución. '
+ui:
+    chapter_name: ''
+    appendix_name: 'Apéndice'
+#new_session: yes

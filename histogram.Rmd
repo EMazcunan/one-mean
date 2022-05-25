@@ -1,0 +1,55 @@
+## Histograma {#histogram}
+
+Los **histogramas** son uno de los gráficos más comunes para representar una variable continua. Para obtener un histograma del alcance de los mandos en nuestra muestra utilizamos la función `geom_histogram()`: 
+
+```{r}
+ggplot(
+    data = mandos,
+    mapping = aes(x = alcance)
+) +
+geom_histogram() 
+```
+
+Con el siguiente código se mejora el histograma anterior usando intervalos de anchura $5$ (`binwidth=5`), personalizando el color de las barras y añadiendo rótulos a los ejes:
+
+```{r histog, echo=TRUE}
+ggplot(
+    data = mandos,
+    mapping = aes(x = alcance)
+) +
+geom_histogram(
+    binwidth = 5,
+    color = "black",
+    fill = "#F98D08"
+) + 
+labs( 
+  x = "Alcance (metros)",
+  y = "Recuento"
+)
+```
+
+
+
+
+
+```{r, echo=FALSE,eval=FALSE,results='hide'}
+# densidad
+# ggplot(
+#     data = datos,
+#     aes(
+#         x = alcance,
+#     )
+# ) +
+# geom_histogram(
+#     aes(y = ..density..),
+#     binwidth = 5,
+#     colour = "black",
+#     fill = "#FF6666"
+# ) +
+# geom_vline(
+#     aes(xintercept=media),
+#     color = "red",
+#     linetype = "dashed",
+#     size = 1
+# )    
+```

@@ -1,0 +1,20 @@
+% This file is created the first time epdf_document is invoked
+% but will not be overwriten afterwards.
+%
+% Preamble
+
+\usepackage{ebox}
+\usepackage{enotation}
+\usepackage{fontawesome}
+
+% https://stackoverflow.com/questions/63222203/rmarkdown-wrap-code-in-chunks-but-keep-breaks-after-pipe
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{
+    breaksymbolleft={},
+    showspaces = false,
+    showtabs = false,
+    breaklines,
+    commandchars=\\\{\}
+}
+
+\pgfplotsset{compat=1.18}

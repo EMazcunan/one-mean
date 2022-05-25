@@ -1,0 +1,94 @@
+## Diagrama de caja y bigotes {#boxplot}
+
+Ahora vamos a representar las observaciones de la variable alcance mediante un gráfico que se denomina **diagrama de caja y bigotes**, usando la función `geom_boxplot()`:
+
+```{r}
+ggplot(
+    data = mandos,
+    mapping = aes(
+        x = "",
+        y = alcance
+    )
+) +
+geom_boxplot()
+```
+
+
+
+
+
+Pasamos ahora a explicar cómo se construye e interpreta el diagrama de caja y bigotes que hemos dibujado. 
+
+### Caja
+
+La caja central del diagrama de caja y bigotes se construye con los valores de los cuartiles: la línea central se corresponde con la mediana y las líneas que delimitan la caja con el primer y tercer cuartil.  De esta forma, la caja central contiene el $50\%$ de los datos: el $25\%$ en la mitad inferior de la caja, desde el primer cuartil hasta la mediana; y  el $25\%$ en la mitad superior, entre la mediana y el tercer cuartil. 
+
+
+
+ 
+### Bigotes y outliers
+
+Queda por explicar qué significan los **"bigotes"**, que son las líneas verticales por encima y debajo de la caja central,  y por qué aparece resaltado un valor  por debajo del bigote inferior. 
+
+
+El propósito de los bigotes es resaltar los datos extremos, muy pequeños, o muy grandes, que se denominan **outliers**. Datos por debajo del bigote inferior son catalogados como outliers por ser atípicamente pequeños, y datos por encima del bigote superior son considerados outliers por  atípicamente grandes. Vemos que en nuestra muestra ha aparecido un oulier por debajo del bigote inferior, que, mirando la escala del eje $Y$, vemos que tiene un valor menor que $30$. Concretamente, se trata del valor mínimo $`r sorted[1]`$ que apareció en primer lugar cuando ordenamos los datos de menor a mayor, y que podemos ver directamente calculando el mínimo:
+
+```{r, results='markup'}
+min(mandos$alcance)
+```
+
+
+Los datos extremos u outliers pueden ser datos erróneos (debidos a errores en las mediciones, en la transcripción de los datos al fichero $\dotsc$). Pero también pueden ser datos correctos que, aun teniendo poca probabilidad de aparecer, han aparecido por azar en nuestra muestra. Aunque es una práctica frecuente desechar los outliers sistemáticamente, no es en absoluto una práctica recomendable. De hecho los outliers pueden ser lo más interesante de la muestra.  La historia más famosa sobre las posibles consecuencias de la eliminación automática de outliers está relacionada con la detección del agujero de ozono. En 1985 se publicó el estudio mostrando que los niveles de ozono en la Antártida habían caído un $10\%$ por debajo de lo normal. Se descubrió entonces que las mediciones inusualmente bajas del nivel de ozono ya habían sido registradas por el satélite Nimbus-7 de la NASA en 1976, pero que dichas mediciones fueron ignoradas al ser procesadas mediante un programa informático que descartaba automáticamente los valores excesivamente pequeños, como si se tratara de errores.  De no ser por este tratamiento inadecuado de los outliers, el agujero de ozono podría haberse detectado casi una década antes. 
+
+Veamos cómo se dibujan  los bigotes para decidir qué datos son outliers.
+En primer lugar se calcula  la diferencia entre tercer cuartil y primer cuartil (que es la anchura de la caja y se denomina **rango intercuartílico**) y se multiplica por $1.5$. En nuestro caso, esta cantidad queda 
+\[
+    1.5(`r qs[3]`-`r qs[1]`)=`r 1.5*(qs[3]-qs[1])`.
+\]
+
+
+Se catalogan como outliers aquellos valores que disten de los bordes de la caja central más de la cantidad anterior. En nuestro caso, serán outliers los valores inferiores a 
+\[
+    `r qs[1]`-`r 1.5*(qs[3]-qs[1])`=`r qs[1] - 1.5*(qs[3]-qs[1])`
+\]
+y los superiores a 
+\[
+    `r qs[3]`+`r 1.5*(qs[3]-qs[1])`=`r qs[3] + 1.5*(qs[3]-qs[1])`.
+\]
+El bigote inferior se extiende hasta el menor dato que no es considerado outlier. Y el bigote superior se extiende  hasta el mayor dato que no es considerado outlier. Los datos por debajo y por arriba de los bigotes se clasifican como outliers.
+
+Miremos de nuevo los primeros y últimos valores en la secuencia ordenada para nuestros $100$ datos:
+
+```{r}
+sorted <- sort(mandos$alcance)
+head(sorted)
+tail(sorted)
+```
+
+
+El único dato catalogado como outlier es $28.26$, por eso el bigote izquierdo se extiende hasta $29.78$ (el mínimo no outlier) y el bigote derecho hasta $66.24$ (el máximo, no outlier).
+
+### Personalización 
+
+El siguiente código incluye varias opciones para personalizar el aspecto del diagrama de caja y bigotes creado al comienzo. 
+```{r}
+ggplot(
+    data = mandos,
+    mapping = aes(
+        x = "",
+        y = alcance
+    )
+) +
+geom_boxplot(
+  fill = "#08C9F9",
+  outlier.colour = "red",
+  outlier.size = 2,
+  outlier.shape = 8
+) +
+labs(
+  x ="", 
+  y = "Alcance (metros)"
+) +
+scale_x_discrete(breaks=NULL) +
+coord_flip()  
+```

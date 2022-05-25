@@ -1,0 +1,49 @@
+---
+documentclass: "mnye"
+author: "Eva María Mazcuñán Navarro"
+github-repo: "EMazcunan/one-mean"
+title: "Inferencias sobre una media"
+degree: "Grado en Ingeniería Informática/Mecánica"
+degreeKey: "mecinf"
+term: "2021-2022"
+bibliography: [book.bib, packages.bib]
+link-citations: yes
+site: bookdown::bookdown_site
+---
+
+---
+classoption: `r sprintf("[title=normal,notoc,nobib,degree=%s]", rmarkdown::yaml_front_matter('index.Rmd')$degreeKey)`
+---
+
+
+```{r, child='preamble.Rmd'}
+```
+
+# {.unlisted .unnumbered}
+
+```{r include=FALSE}
+library(ggplot2)
+theme_update(# axis labels
+             axis.title = element_text(size = 16),
+             # tick labels
+             axis.text = element_text(size = 16),
+             # title
+             title = element_text(size = 16))
+```
+
+
+```{r echo=FALSE, results='hide',eval=FALSE}
+# construcción del archivo 'mandos.csv'
+# con los datos
+# muestra <- rnorm(
+#    100,
+#    49,
+#    7
+# )
+# 
+# write.csv(
+#     x = data.frame(alcance = round(muestra,2)),
+#     row.names = FALSE,
+#     file = "mandos.csv"
+# )
+```

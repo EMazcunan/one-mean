@@ -1,0 +1,48 @@
+# Planteamiento del problema {#problem}
+
+
+:::{.ebox data-latex="{}"}
+Una empresa de domótica comercializa un modelo de mandos a distancia para la apertura de puertas de garaje. 
+
+Estamos interesados en investigar el radio de alcance medio de este modelo de mandos, siendo el radio de alcance de un mando la distancia máxima medida en metros a la que el mando consigue abrir la puerta.
+
+La empresa afirma que el radio de alcance medio de sus mandos es superior a $50$ metros.  Se tomó una muestra $100$ mandos y se midió su radio de alcance, con el objetivo de contrastar si los datos recogidos resultan compatibles con la afirmación de la empresa.
+:::
+
+Consideremos la variable aleatoria 
+
+:::{.center data-latex=""}
+$X =$ radio de alcance de un mando, en metros.  
+:::
+
+Nuestro objetivo es investigar el valor del parámetro 
+$$
+\mu = E(X),
+$$
+la media o valor esperado de la variable $X$.
+
+En el archivo enlazado a continuación se registran los radios de alcance de los  $100$ mandos analizados:  [mandos.csv](https://drive.google.com//uc?export=download&amp;id=1RGAPpTJJnTpj9R4jpZ5TO3u1t1RUgkJK). En el resto de la práctica se asume que el archivo `mandos.csv` está ubicado en un directorio de nombre `data` dentro del directorio en el que se encuentre el archivo `.Rmd` con el código.
+
+
+En esta práctica exploraremos qué conclusiones o inferencias podemos realizar sobre el parámetro desconocido $\mu$, a partir de las $100$ mediciones realizadas. 
+
+***
+
+Comenzamos cargando el paquete `tidyverse` para tener acceso a todas las funciones que usaremos:
+
+```{r}
+library("tidyverse")
+```
+
+***
+
+Importamos  los datos del problema con la instrucción
+```{r}
+mandos <- read_csv("data/mandos.csv")
+```
+que creará la hoja de datos `mandos` con los contenidos del archivo ` mandos.csv`.
+
+
+
+Al visualizar el objeto `mandos` recién creado (desde la pestaña Environment) verás que  tiene una única variable, de nombre `alcance`, en la que se registra el radio de alcance medido para cada uno de los $100$ mandos analizados. 
+

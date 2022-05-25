@@ -1,0 +1,53 @@
+## Cuantiles {#quantiles}
+
+
+
+Dadas $n$ observaciones $x_1$, $x_2$, $\dots$, $x_n$ de una variable aleatoria continua $X$ y  un valor $\alpha$ entre $0$ y $1$, se define el **cuantil de orden $\alpha$** de dichas observaciones como el valor que, en la secuencia ordenada de valores de menor a mayor, queda situado de forma que divide la muestra en dos partes,  dejando por debajo una fracción o proporción $\alpha$ de los valores. 
+
+
+Por ejemplo, el cuantil de orden $0.1$, posicionado en la secuencia ordenada de valores, dejaría al $10\%$ de las observaciones por debajo y al $90\%$ restante por arriba. 
+
+
+
+Como casos particulares de cuantiles tenemos los **cuartiles**:
+
+* El **primer cuartil** es el cuantil $0.25$, esto es, el valor que deja por debajo el $25\%$ de los datos (y por arriba el $75\%$ restante).
+
+* El **segundo cuartil** o **mediana** es el cuantil $0.25$, o lo que es lo mismo, el valor que deja por debajo el $50\%$ de los datos (y por arriba el otro $50\%$).
+
+* Y el **tercer cuartil** es el cuantil $0.75$, es decir el valor que deja por debajo el $75\%$ de los datos (y por arriba el $25\%$ restante). 
+
+
+Calculamos el primer cuartil, la mediana, y el tercer cuartil de nuestra muestra con la siguiente instrucción:
+
+```{r, results='markup'}
+quantile(mandos$alcance, probs=c(0.25,0.5,0.75))
+```
+
+```{r, include=FALSE}
+qs <- .Last.value
+```
+
+El primer cuartil resulta ser $`r qs[1]`$, la mediana $`r qs[2]`$, y el tercer cuartil $`r qs[3]`$. Veamos por ejemplo cómo se ha obtenido el valor $`r qs[2]`$ para la mediana, que deja el $50\%$ de los datos por debajo y la otra mitad por arriba. En primer lugar ordenamos nuestros datos, de menor a mayor, con la orden:
+
+
+```{r}
+sort(mandos$alcance)
+```
+
+
+```{r, include=FALSE}
+sorted <- .Last.value
+```
+En la salida del comando anterior verás que:
+
+*  El dato que ocupa la posición $50$ en la secuencia de valores ordenados, es  $`r sorted[50]`$ (recuerda que tienes que fijarte en los números entre corchetes al principio de cada línea de la salida para saber qué posición ocupa cada dato). Este valor deja $49$ valores por debajo, y $50$ por arriba.  
+
+* Y el dato que ocupa la posición $51$,  es $`r sorted[51]`$.  Deja $50$ valores por debajo y $49$ por arriba. 
+
+Así, ni $`r sorted[50]`$ (posición $50$), ni $`r sorted[51]`$ (posición $51$), dejan justo la mitad de los datos por debajo y la otra mitad por arriba.
+La posición ideal para la mediana sería la posición $50.5$. Por esta razón, el cálculo que hace `r R()` para obtener la mediana es 
+$$
+\frac{`r sorted[50]`+`r sorted[51]`}{2}=`r (sorted[50]+sorted[51])/2`,
+$$
+la media aritmética entre el dato de la posición $50$ y el  de la posición $51$.

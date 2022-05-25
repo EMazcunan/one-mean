@@ -1,0 +1,28 @@
+# Estadística descriptiva {#descriptive}
+
+Como punto de partida de nuestro estudio, realizaremos un análisis exploratorio de nuestros datos, incluyendo:
+
+* El cálculo de la media muestral $\bar x$, como estimación puntual de la media poblacional $\mu$. 
+
+* El cálculo de otras medidas descriptivas, tales como la desviación típica muestral y los cuartiles. 
+
+* La representación gráfica de los datos mediante un histograma y un diagrama de caja y bigotes.
+
+
+```{r, child='mean.Rmd'}
+```
+
+```{r, child='sd.Rmd'}
+```
+
+```{r, child='quantiles.Rmd'}
+```
+
+```{r, child='summarize.Rmd'}
+```
+
+```{r, child='histogram.Rmd'}
+```
+
+```{r, child='boxplot.Rmd'}
+```

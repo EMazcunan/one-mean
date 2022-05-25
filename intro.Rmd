@@ -1,0 +1,29 @@
+# Introducción {#intro .unnumbered}
+
+En el tema **Inferencia Estadística** se estudiaron los fundamentos de las principales técnicas de inferencia estadística: los contrastes de hipótesis y los intervalos de confianza. Se presentaron los nuevos conceptos partiendo del caso particular de un problema de inferencia para una **proporción**. 
+
+En esta práctica se aplicarán las mencionadas técnicas para realizar inferencias sobre un nuevo parámetro: la **media** de una variable continua. 
+
+
+## Requisitos previos {#prerequisites .unnumbered}
+
+Antes de comenzar esta práctica, necesitas:
+
+* Tener `r R()` y `r RStudio()` instalados en tu equipo (ver [Instalación de R y RStudio](https://emazcunan.github.io/install-r-rstudio/){target="_blank"}).
+
+* Haber estudiado la práctica [Primeros pasos con R y RStudio](https://emazcunan.github.io/basics-r-rstudio/){target="_blank"}.
+
+* Haber estudiado el  tema **Inferencia Estadística**.
+
+## Flujo de trabajo {#workflow .unnumbered}
+
+Documenta lo que vayas aprendiendo conforme leas la práctica usando un documento R Markdown. Puedes utilizar [esta plantilla](https://drive.google.com/uc?id=1t9pjP_1Kjo8wgtav_I6hPHXxb5BqTIrc&export=download). 
+
+Se recomienda guardar el archivo R Markdown en una carpeta propia. En dicha carpeta se creará el archivo `r textsf("HTML")` resultante de la compilación y después añadiremos los archivos con los datos que usaremos a lo largo de la práctica. 
+
+
+Recuerda que para crear encabezados se utiliza la sintaxis `#` (nivel 1), `##` (nivel 2), ...; y que los bloques de código se crean con el atajo `Ctrl + Alt + I`.
+
+Respecto al seccionado del documento, lo más práctico es que imites la estructura de este guión de prácticas. 
+
+
